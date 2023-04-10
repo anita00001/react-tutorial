@@ -11,6 +11,7 @@ i,
 input {
   border: none;
   background-color: #fff;
+  outline: none;
   cursor: pointer;
   color: rgba(0, 0, 0, 0.25);
 }
@@ -18,6 +19,7 @@ input {
 input[type=text] {
   padding: 1rem;
   font-style: italic;
+  cursor: text;
 }
 
 #press-enter {
