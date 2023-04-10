@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import TodosList from './TodosList/TodosList';
-// import InputTodo from './InputTodo/InputTodo';
+import InputTodo from './InputTodo/InputTodo';
 
 const TodosLogic = () => {
     const [todos, setTodos] = useState([
@@ -36,7 +36,7 @@ const TodosLogic = () => {
     };
     return (
       <div>
-        {/* <InputTodo /> */}
+        <InputTodo />
         <TodosList todosProps={todos} handleChange={handleChange} />
       </div>
     );
