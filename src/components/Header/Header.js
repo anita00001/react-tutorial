@@ -1,12 +1,12 @@
 import './Header.css';
 
 function Header() {
-    return (
-        <header className="title">
-            <h1>Today's To-Do List</h1>
-            <i className="fa-solid fa-rotate"></i>
-        </header>
-    );
+  return (
+    <header className="title">
+      <h1>Today's To-Do List</h1>
+      <i className="fa-solid fa-rotate" />
+    </header>
+  );
 }
 
 export default Header;
