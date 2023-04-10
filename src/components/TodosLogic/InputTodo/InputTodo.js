@@ -1,3 +1,5 @@
+import './InputTodo.css';
+
 function InputTodo() {
   return (
     <form className="new-task">

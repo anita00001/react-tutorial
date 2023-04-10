@@ -1,6 +1,6 @@
 .app {
   width: 80%;
-  padding: 1rem auto;
+  padding: 1rem 0;
   margin: 20vh auto;
   font-family: 'Courier New', Courier, monospace;
   display: flex;

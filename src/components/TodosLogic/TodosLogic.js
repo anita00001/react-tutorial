@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import './TodosLogic.css';
 import TodosList from './TodosList/TodosList';
 import InputTodo from './InputTodo/InputTodo';
 
@@ -33,7 +33,7 @@ const TodosLogic = () => {
     }));
   };
   return (
-    <div>
+    <div className="todo-logic">
       <InputTodo />
       <TodosList todosProps={todos} handleChange={handleChange} />
     </div>
