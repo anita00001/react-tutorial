@@ -1,28 +1,45 @@
-import { useState } from 'react';
+// TodosLogic.js
+import { useState, useEffect } from 'react';
 import './TodosLogic.css';
-import TodosList from './TodosList/TodosList';
 import InputTodo from './InputTodo/InputTodo';
+import TodosList from './TodosList/TodosList';
 
-const TodosLogic = () => {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: 'Setup development environment',
-      completed: true,
-    },
-    {
-      id: 2,
-      title: 'Develop website and add content',
-      completed: false,
-    },
-    {
-      id: 3,
-      title: 'Deploy to live server',
-      completed: false,
-    },
-  ]);
-  const handleChange = (id) => {
-    setTodos((prevState) => prevState.map((todo) => {
+function TodosLogic() {
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem('todos'));
+    if (storedTodos) {
+      setTodos(storedTodos);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+  const addTodo = (newTodo) => {
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
+  };
+
+  const updateTodo = (id, updatedTitle) => {
+    setTodos((prevTodos) => prevTodos.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          title: updatedTitle,
+        };
+      }
+      return todo;
+    }));
+  };
+
+  const deleteTodo = (id) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  };
+
+  const toggleCompleted = (id) => {
+    setTodos((prevTodos) => prevTodos.map((todo) => {
       if (todo.id === id) {
         return {
           ...todo,
@@ -32,11 +49,20 @@ const TodosLogic = () => {
       return todo;
     }));
   };
+
   return (
-    <div className="todo-logic">
-      <InputTodo />
-      <TodosList todosProps={todos} handleChange={handleChange} />
-    </div>
+    <>
+      <main className="todo-logic">
+        <InputTodo addTodo={addTodo} />
+        <TodosList
+          todos={todos}
+          deleteTodo={deleteTodo}
+          toggleCompleted={toggleCompleted}
+          updateTodo={updateTodo}
+        />
+      </main>
+    </>
   );
-};
+}
+
 export default TodosLogic;
