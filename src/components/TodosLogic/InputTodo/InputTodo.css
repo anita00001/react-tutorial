@@ -1,0 +1,27 @@
+.new-task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid lightgray;
+  padding: 0 1.5rem 0 0;
+}
+
+button,
+i,
+input {
+  border: none;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+input[type=text] {
+  padding: 1rem;
+  font-style: italic;
+  cursor: text;
+}
+
+#press-enter {
+  transform: rotate(90deg);
+}
